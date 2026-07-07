@@ -15,23 +15,7 @@ pip install diffusers
 
 ```
 
-## 2. Dataset layout expected by every script
-
-```
-Dataset/
-  clean_targets/
-    1.png ... 200.png
-  watermarked_sources/
-    WM_1/  (25 images)
-    WM_2/  (25 images)
-    ...
-    WM_8/  (25 images)
-```
-
-Targets `1-25` belong to `WM_1`, `26-50` to `WM_2`, ..., `176-200` to `WM_8`
-(see the `CATEGORIES` list at the top of each script).
-
-## 3. Path configuration
+## 2. Path configuration
 
 Every script hardcodes its paths in a `CONFIG` block near the top (no CLI
 args / env vars). Before running a script, open it and edit:
