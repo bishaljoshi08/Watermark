@@ -47,13 +47,13 @@ downloaded `convnext_pref_model.pth`.
 ### Which version to run?
 
 `WMforger.py` is the original draft; `v3`-`v11` are a tuning sweep of the
-same method (config-only diffs — see table below). **`v8` or `v9` were
-the best-performing configs. I am not sure please verify by running both**;
+same method (config-only diffs — see table below). **`v8` was
+the best-performing config**;
 
 ```bash
 # Edit WMFORGER_DIR / CKPT_PATH / DATASET_DIR / TEMP_OUT_DIR / FILE_PATH
 # at the top of the file first.
-python WMforger_v9.py       # or WMforger_v8.py
+python WMforger_v8.py 
 ```
 
 This will, per category:
@@ -81,13 +81,6 @@ This will, per category:
 | **v9** | 200 | **2.0** | WM_6: 1.3 | median | WM_6 only |
 | v10 | 200 | 3.0 | WM_6: 1.5 | median | WM_6 only |
 | v11 | 200 | 3.0 | WM_6: 1.5 | median | all 8 categories |
-
-Key finding along the way: `v7`'s `EXTRACTION_MODE = "per_source"` (forge
-every target with one fixed source's raw extraction, no averaging) was
-**catastrophic** (overall Sqlt collapsed to ~0.45) — it proved the
-per-source extraction is heavily content-entangled, so combining across the
-25 sources (mean/median) isn't just noise reduction, it's required to strip
-out source-specific content. `v8` onward locks in `"median"`.
 
 ---
 
